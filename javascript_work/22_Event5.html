@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            const parentEl = document.querySelector(".parent")
+            
+                                        //익명함수 or 화살표함수
+            parentEl.addEventListener("wheel", ev => {
+                //ev.preventDefault()         //휠이라는 동작자체를 못하게하겠다 ev.앞에 꼭 써줘야함
+                console.log("Wheel~")
+            }, false)                       //콘솔에 휠은 올라가는데 스크롤 기능이 안됨.
+            
+            const anchorE1 = document.querySelector("a")
+
+            anchorE1.addEventListener("click", ev => {
+                ev.preventDefault()
+                console.log("Click~")       //하이퍼링크의 기본동작인 이동을 금지시킨다
+            },false)
+        }                               
+    </script>
+</head>
+<body>
+    <div class="parent" style="height: 1000px;">  <!--스크롤바가 생기게끔-->
+        <div class="child"></div>
+            <a href="http://w3schools.com">w3school</a>
+    </div>
+</body>
+</html>

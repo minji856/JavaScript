@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색예제</title>
+</head>
+    <script>
+        /* 검색예제 */
+        const users = [
+            {name:'홍길동', age:35, address:'서울'},
+            {name:'임꺽정', age:15, address:'대전'},
+            {name:'유비', age:10, address:'부산'},
+            {name:'관우', age:40, address:'울산'},
+            {name:'장비', age:29, address:'경기'}
+        ]
+        let name = window.prompt("이름을 입력하시오. :")
+        for(const u in users){
+            if(users[u].name === name){
+                console.log(users[u])
+            }
+        }
+        /*
+        프롬프트로 이름을 입력받아 해당 사람의 정보를 출력하는 프로그램
+        */
+    </script>
+<body>
+    
+</body>
+</html>

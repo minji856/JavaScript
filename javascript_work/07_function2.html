@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        
+        function getNumber() {
+            return 123
+        }
+        console.log(typeof getNumber) //fuction
+        console.log(typeof getNumber()) //number
+        console.log("--------------------------------------")
+
+        // 데이터 타입 확인 - 조건문에 사용 console.log대신에 if넣어주면됨
+        console.log(typeof 'Hello') //string
+        console.log(typeof 'Hello' === 'string') //조건유도가능 true
+        console.log(typeof 123 === 'number') //true
+        console.log(typeof undefined === 'undefined') //true
+        console.log(typeof null === 'null') //얘만 false 나옴 어떻게 해야할까
+        console.log(typeof function(){} === 'function') //true
+
+        console.log(typeof null) //object 뭐랑 비교해야할지 찾는
+        console.log(typeof null === 'object') //true로 나오긴함 object는 범용
+        //null은 생성자가 없음 console.log(null.constructor === Object) 불가능
+        console.log(typeof [] === 'object') //true
+        console.log(typeof {} === 'object') //true
+
+        console.log([].constructor) //너 생성자함수있냐 array
+        console.log([].constructor === Array) //true
+        console.log({}.constructor)
+        console.log({}.constructor === Object) //true
+
+        //모태=prototype 클래스를 만들때 쓸수있음
+        console.log(Object.prototype.toString.call(null)) //[object Null] 정체가 null이다를 call로 알려줌
+        console.log(Object.prototype.toString.call(null).slice(8,-1) == 'Null') //true
+
+         /*문자의 일부분을 잘라오는 대괄호까지 자릿수니까 뒤에서부터 몇글자를 뺄건지 -1 (-2자리,-3자리란뜻)
+         제로베이스여서 0부터 전체를 문자로 보는것 공백까지 숫자로 [object Null] 01234567891011 11하나만 빼면 null값만
+         나오니까 -1*/
+
+
+         console.log(Object.prototype.toString.call([])) //[object Array]
+         console.log(Object.prototype.toString.call(123)) //함수로 만들면 더 쉽게 확인할수있다
+         console.log("--------------------------------------")
+
+         function checktype(data){
+            return Object.prototype.toString.call(data).slice(8,-1)     
+         }
+
+         console.log(checktype('Hello'))
+         console.log(checktype(123))
+         console.log(checktype([]))
+         console.log(checktype({}))
+         console.log(checktype(null))
+         console.log(checktype(function(){}))
+
+
+    </script>
+<body>
+    
+</body>
+</html>

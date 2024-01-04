@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여러함수들</title>
+</head>
+    <script>
+        /*
+        function sum(a, b) {        //원래 함수
+            return a + b
+        }
+
+        console.log(sum(1, 2))
+
+        const sum = (a, b) => {    //화살표함수
+           return a + b
+        }
+        */
+
+        // const sum = (a, b) => a + b      //한줄만 작성할때는 중괄호 생략가능 !2줄은 안됨!
+
+
+        // console.log(sum(1, 2))
+        console.log("------------------------------------------")
+
+
+
+        /* 콜백 함수 */
+        //------------------------------------------------------------
+        /*
+        const a = () => {console.log('A')}
+        const b = () => {console.log('B')}
+
+        a()
+        b()
+        */
+        // 위의 코드를 콜백으로 만들어보자
+        
+        /*
+        const a = cb => {           //매개변수가 있는거 (cb) 인데 생략함
+            console.log('A')
+            cb()            //이것도 내가 호출한거아니냐 a라는 함수가 필요할 떄 cb를 호출하는것
+        }
+        const b = () => {
+            console.log('B')         //a에게 넘겨준다 cb라는 매개변수는 b함수랑 똑같다
+        }
+        
+        a(b)
+        */
+        //------------------------------------------------------------ 
+
+        /*
+        const sum = (a, b) => a + b
+
+        console.log(sum(1, 2))          //1초후에 계산해서 던져지게 -시간차
+        console.log(sum(3, 7))
+        */
+
+        //setTimeout(함수, 지연시간)   //타이머 재주는
+                    //└동작
+        /* 원리는 이런 원리
+        function hello(){
+            console.log("hello")
+        } 
+        */      
+        //setTimeout(hello, 2000) 
+        //setTimeout(() => {console.log("hello")}, 2000)     //함수의 이름이 들어가야함 호출X 괄호신경쓰기       
+
+        // const sum = (a, b) => {
+        //     setTimeout(()=>{return a+b}, 1000)   //즉시 계산하는게 아니고 1초후에
+        // }                   //3을 또 리턴한게 아니라 가져오기만 한거다 내보낸것 X
+        //                         //return 한번더 해야함
+
+        // console.log(sum(1, 2))  //console로 찍으면 3이 뜬다
+
+        // const sum = (a, b, c) => {
+        //     setTimeout(c(a+b))   
+        // }
+        //                             //함수를 전달할거다
+        //                         //a+b값을 c가 받는 인자가 값만 주고받는게 아님(함수주고받음)
+                                    //전달받은 값이 없으니 defined뜨는게 맞음
+        // console.log(sum(1, 2, (val)=>{console.log(val)})) 
+        //                       //value
+        
+        // const c = (val)=>{console.log(val)}                  
+        // ----------------------------------------------------
+
+
+        /* 재귀 함수 */
+        //-----------------------------------------------------
+        let cnt = 0
+        const a = () => {
+            console.log('A')
+            cnt++
+            if(cnt < 4){
+                a()
+            }
+        }
+
+        a()         //밖에서 호출 1번은 해줘야한다 실행을 1번은 무조건 하니까
+    </script>
+<body>
+    
+</body>
+</html>

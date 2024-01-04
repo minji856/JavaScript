@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키보드이벤트</title>
+    <style>
+        form {
+            padding: 10px;
+            border: 4px solid transparent; /*투명*/
+            display: flex; /*수평정렬*/
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        form.active {
+            border-color: orange;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //const inputEl = document.querySelector("input")
+
+            // inputEl.addEventListener("keydown", ev => {
+            //     console.log(ev.key)
+            // })
+
+            // inputEl.addEventListener("keyup", ev => {
+            //     console.log(ev.key)
+            // })      //눌렀다가 뗐을때
+            
+            // inputEl.addEventListener("keydown", ev => {
+            //     if(ev.key === 'Enter'){
+            //         console.log(ev.target.value)      //text박스에서 키보드라는 사건이 발생 value:값을 입력받기
+            //     }
+            // })
+
+            //-----------------------------------------------------
+            const formEl = document.querySelector('form')
+            //const inputs = document.querySelectorAll('input')
+            const inputs = document.forms[0].querySelectorAll('input') //form도 배열로 처리되서 배열로 접근!
+            //const inputs = formEl.querySelectorAll('input')
+                
+            //ID랑 PW 반복 2개 처음엔 ID 박스.
+            inputs.forEach( el => {
+                el.addEventListener("focus", () => {
+                    formEl.classList.add('active')      //모든 input박스 가져와서 다 포커싱됨.
+                })
+
+                el.addEventListener("blur", () => {
+                    formEl.classList.remove('active')       //포커스를 잃었을 때
+                })
+
+                // el.addEventListener("input", ev => {
+                //     console.log(ev.target.value)            //입력할때 마다 이벤트가 발생하는
+                // })
+
+                el.addEventListener("change", ev => {
+                    console.log(ev.target.value)        //포커스가 다른곳으로 넘어갔을때 그 이벤트가 변화됐다
+                })                                      //input보다는 change를 더 많이 쓴다
+            }) 
+        }
+    </script>
+</head>
+<body>
+    <input type="text"/>
+    <hr/>
+    <form>
+        <fieldset>
+        <legend>로그인</legend>
+        <input type="text" placeholder="ID"/>   <!--새로나온 속성-->
+        <input type="password" placeholder="PW"/>
+        <button type="submit">제출</button>
+        <button type="reset">초기화</button>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM예제</title>
+    <script>
+        function fnLoad(){
+        const e1 = document.querySelector('#first')
+        console.log(e1)
+        console.log(e1.closest('div'))
+        console.log(e1.children)
+        console.log("-----------------------------------------------")    
+
+
+        const e2 = document.querySelector('#chat-link')
+        console.log(e2)
+        console.log(e2.closest('p'))
+        console.log(e2.nextSibling) //netsong7
+        console.log(e2.previousSibling) //Happy Week
+        console.log(e2.previousSibling.parentElement)
+        console.log(e2.previousElementSibling)
+        console.log("-----------------------------------------------")    
+
+        
+        const e3 = document.querySelectorAll('p.outer-text')
+        console.log(e3)
+        e3.forEach(e => console.log(e.textContent)) 
+        console.log("-----------------------------------------------") 
+
+
+        const e4 = document.getElementsByClassName('inner-text first-item')
+        console.log(e4)
+        console.log(e4.firstElementchild)
+        
+
+        const e5 = document.getElementById('second') 
+        console.log(e5)
+        console.log(e5.closest('p'))
+        console.log(e5.nextElementSibling)
+        console.log(e5.nextSibling)    
+        console.log(e5.children)
+
+        const e6 = document.querySelectorAll('.p')
+        console.log(e6)
+        e6.forEach(e => console.log(e.textContent)) 
+        console.log("-----------------------------------------------") 
+
+        const e7 = document.querySelector('#w3-link')
+        console.log(e7)
+        console.log(e7.closest('div'))
+        console.log(e7.nextSibling) //w3schools
+        console.log(e7.previousSibling) //Happy programming
+        console.log(e7.previousSibling.parentElement)
+        console.log(e7.previousElementSibling)
+        console.log("-----------------------------------------------")  
+            
+        const e8 = document.querySelector('.inner-text.first-item')
+        console.log(e8)             
+        const e9 = document.querySelectorAll('.inner-text.second-item')
+        console.log(e9)
+    }
+
+    </script>
+</head>
+<body onload="fnLoad()">
+    <div>
+        <p class="inner-text first-item" id="first">
+            Happy Week
+            <a href="https://chat.netsong7.net" id="chat-link">netsong7</a>
+        </p>
+        <p class="inner-text second-item">
+            Happy Programming
+            <a href="https://www.w3schools.com" id="w3-link">W3schools</a>
+        </p>
+    </div>
+    <p class="outer-text first-item" id="second">
+        <b>
+            Programming is funny
+        </b>
+        <p class="outer-text">
+            <b>
+                All or Nothing!
+            </b>
+        </p>
+    </p>
+</body>
+</html>

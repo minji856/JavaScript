@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        function fnConfirm(){
+            let result = window.confirm("당신의 선택은?")
+            //console.log(result)
+            if(result === true){
+                window.alert('확인을 선택함')
+            } else {
+                window.alert('취소를 선택함')
+            }
+        }                           //T F로 리턴됨
+
+        function fnEval(){
+            let ex = "50 * 2 + 3"
+            console.log(eval(ex))
+
+            let ex2 = "alert('안녕'); document.write('hello')"
+            console.log(eval(ex2))
+        }                           //문자열로 나온다 전체코드 바꿀때
+
+                                    //eval도 가능은하지만 parse는 특정값 바꿀때 정교한기술O
+        function fnParse(){
+            console.log(parseInt("33") + parseInt("22"))
+            // console.log(eval("33") + eval("22")) 가능은함
+            console.log(parseInt("33abc"))  //eval은 계산 불가능 유효한 숫자까지만 출력하고 나머진 걸러짐
+            console.log(parseFloat("3.14*^^*"))
+        }
+
+        const fnFinite = () => {
+            console.log(isFinite(123))
+            console.log(isFinite("123"))    //자동형변환된것
+            console.log(isFinite("안녕하세요"))  // false
+        }                   //true 숫자데이터는 기본 크기가 있음
+
+        const fnNaN = () => {
+            console.log(isNaN(1234))   //숫자니까 false 숫자가 아니냐로 물었기때문
+            console.log(isNaN("1234")) //문자열이여도 숫자로 자동 형변환
+            console.log(isNaN(12.34))
+            console.log(isNaN('홍길동'))  //true
+        }
+
+        const fnEscape = () => {
+            console.log(escape('홍길동')) //%uD64D%uAE38%uB3D9
+            console.log(escape('korea1234')) //korea1234 바꿀필요X 그대로 전달
+            console.log(escape('$%^& ')) //%24%25%5E%26%20 %20-공백
+            console.log(escape('*@-_+./'))
+            console.log(unescape("%uD64D%uAE38%uB3D9")) //다시 복귀시킬때
+        }
+        
+    </script>
+<body>
+    <input type="button" value="confirm test" onclick="fnConfirm()"/><br/><br/>
+    <input type="button" value="eval test" onclick="fnEval()"/><br/><br/>
+    <input type="button" value="parse test" onclick="fnParse()"/><br/><br/>
+    <input type="button" value="isFinite test" onclick="fnFinite()"/><br/><br/>
+    <input type="button" value="isNaN test" onclick="fnNaN()"/><br/><br/>
+    <input type="button" value="escape test" onclick="fnEscape()"/><br/><br/>
+    <br/><br/>
+    <input type="button" value="뒤로가기" onclick="history.back()"/> <!--왔던페이지로 되돌아가는 함수-->
+</body>
+</html>

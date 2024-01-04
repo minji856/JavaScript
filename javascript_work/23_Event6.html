@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #grand {border:1px solid red}
+        #parent {border:1px solid green}
+        #child {border:1px solid blue}
+    </style>
+    <script src="log.js"></script>
+    <script>
+        window.onload = function(){
+            const child = document.getElementById('child')
+            const parent = document.getElementById('parent')
+            const grand = document.getElementById('grand')
+
+            child.addEventListener("mousedown", ev => {
+                log("Child~")
+                ev.stopPropagation() //전파를 중지하는 함수
+            }, {capture:false})        //true는 캡쳐링 알게모르게 캡쳐링을 막아놓고 썼음. 함수로 안막고 인자에서만 false로 바꿔줌
+
+            parent.addEventListener("mousedown", ev => {
+                log("Parent~")
+                ev.stopPropagation()
+            }, false)                       //parent,grand 같이나옴-버블링
+            
+            grand.addEventListener("mousedown", ev => {
+                log("Grand~")            //어짜피 맨 꼭대기니까 전파 중지할 필요 X
+            }, {once:true})   
+            
+            grand.addEventListener("wheel", ev => {
+                console.log('Grand~')
+                // for(let i=0; i<10000; i++){
+                //     console.log(i)
+                // }                       //부하도 많이 생길것이다
+            }, {passive:true})  //기본값은 passive:false
+        }
+    </script>
+</head>
+<body>
+    <div id="grand">
+        grand 상단
+        <div id="parent">
+            parent의 상단
+            <div id="child">
+                child
+            </div>
+            parent 하단
+        </div>
+        grand의 하단
+    </div>
+    <br/><br/>
+    <div id="debugConsole" style="border: 1px solid red;"></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스이벤트</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .parent {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid;
+            background-color: red;
+            overflow: auto;
+        }
+        
+        .child {
+            width: 200px;
+            height: 1000px;
+            border: 10px solid;
+            background-color: orange;
+        }
+
+        .child.active {
+            background-color: yellowgreen;
+        }
+
+        
+    </style>
+    <script>
+        window.onload = function(){
+            const parent = document.querySelector('.parent')
+            const child = document.querySelector('.child')
+
+            // child.addEventListener("mousedown", e => {
+            //     //console.log(e.clientX, e.clientY)           //child 마우스 좌표가 찍힘
+            //     //console.log(e.which, e.button) // button : 0(왼), 1(가) , 2(오) 버튼값만 보기 (크로스브라우징되서)
+                
+            //     child.classList.add('active')
+            // })
+
+            // child.addEventListener("mouseup",() => {
+            //     child.classList.remove('active')
+            // })
+
+            // child.addEventListener("click",() => {
+            //     child.classList.toggle('active')
+            // })           *토글사용
+
+            // child.addEventListener("dblclick",() => {
+            //     child.classList.toggle('active')
+            // })           *더블클릭
+
+
+            //---------------------------------------------
+
+            // child.addEventListener("mouseenter",() => {
+            //     child.classList.add('active')
+            // })
+
+            // child.addEventListener("mouseleave",() => {
+            //     child.classList.remove('active')
+            // })
+
+            // child.addEventListener('mousemove', ev => {
+            //     console.log(ev.offsetX, ev.offsetY)
+            // }) //현재 마우스 위치-게임프로그램 만들때.
+
+            // child.addEventListener("contextmenu", ev => {
+            //     ev.preventDefault()     //보안문서 우클릭못하게할때(크롬에서 js막는 옵션도있음 창과방패)
+            //     console.log(ev)
+            // }) //alt키를 눌렀는지. 버튼을 뭐로 눌렀는지
+
+            parent.addEventListener("wheel", ev => {
+                //console.log(ev)     //음수나 양수냐로 스크롤 방향을 알 수있음. 스크롤이 수직이라 y만 바뀐다
+                console.log(parent.scrollLeft, parent.scrollTop) //좌측에서 얼마나 떨어져있는지 이벤트정보X 요소에서 끌어오기
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>

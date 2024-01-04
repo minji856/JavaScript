@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let str = 'Apple, Banana, Cherry';
+
+        let reversestr = str.split(",");  
+        strReverse = reversestr.reverse().join(","); 
+
+        console.log(strReverse);
+
+
+        let title = document.querySelector('.abc');
+
+let beforebegin = document.createElement('p');
+beforebegin.innerHTML = 'beforebegin';
+
+let afterbegin = document.createElement('p');
+afterbegin.innerText = 'afterbegin';
+
+let beforeend = document.createElement('p');
+beforeend.innerText = 'beforeend';
+
+let afterend = document.createElement('p');
+afterend.innerText = 'afterend';
+
+title.insertAdjacentElement('beforebegin', beforebegin);
+title.insertAdjacentElement('afterbegin', afterbegin);
+title.insertAdjacentElement('beforeend', beforeend);
+title.insertAdjacentElement('afterend', afterend);
+    </script>
+</head>
+<body>
+    <!-- <table border="1" bordercolor="Red">
+        <tr>
+            <td rowspan="4"><img src="./images/hero6.png"></td>
+            <td colspan="8">이력서</td>
+        </tr>
+        <tr> 
+            <td rowspan="2">성명</td>
+            <td rowspan="2">홍길동</td>
+            <td colspan="4">주민등록번호</td>
+        </tr>
+        <tr>
+            <td colspan="3">090101-1234567</td>
+        </tr>
+        <tr>
+            <td colspan="8">생년월일 19 년 월 일생(만 세)</td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td colspan="5"></td>
+        </tr>
+        <tr>
+            <td rowspan="2">연락처</td>
+            <td>집</td>
+            <td>02-1234-1234</td>
+            <td rowspan="2">전자우편</td>
+            <td rowspan="2">hong@naver.com</td>
+        </tr>
+        <tr>
+            <td>핸드폰</td>
+            <td>010-1234-1234</td>
+        </tr>  -->
+    <!-- <form name="pizza">
+        고객명 : <input type="text"><br/><br/>
+        전화번호 : <input type="text"><br/><br/>
+        E-mail : <input type="text"><br/><br/>
+        피자선택 : <select name="choosepizza" value="피자를 선택하세요">
+            <option value='' selected>피자를 선택하세요</option>
+            <option value="firemeat">치즈 퐁듀 파이어 미트</option>
+            <option value="blockbuster">블록버스터4</option>
+            <option value="global">글로벌 레전드4</option>
+            <option value="steak">블랙앵거스 스테이크</option>
+            <option value="best">베스트 콰트로</option>
+            <option value="blacktiger">블랙타이거 슈림프</option>
+        </select>
+        <br/><br/>
+        피자 사이즈<br/> <br/>
+        <input type="radio" name="size">Small<br/><br/>          
+        <input type="radio" name="size">Medium<br/><br/>          
+        <input type="radio" name="size">Large<br/><br/>
+        토핑 선택<br/><br/>
+        <input type="checkbox" value="bacon">베이컨<br/><br/>
+        <input type="checkbox" value="cheese">치즈<br/><br/>
+        <input type="checkbox" value="onion">양파<br/><br/>
+        <input type="checkbox" value="mushroom">버섯<br/><br/>
+        희망배송시간 : <input type="time"><br/><br/>
+        
+        배송시 요청사항 : <textarea cols="18" rows="4"></textarea>
+        <br/><br/>
+        <button type="submit" value="주문">주문하기</button>
+    </form> -->
+
+    
+</body>
+</html>

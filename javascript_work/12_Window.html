@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        function fnOpen(){
+            window.open("zipcode.html", "", "left=100,top=100,width=320,height=320") // url, targer, feature 창 이름은 생략해도됨.
+        }
+
+        function showWatch(){
+            let today = new Date()
+            let msg = `현재시간은 ${today.getHours()}시 ${today.getMinutes()}분 ${today.getSeconds()}초 입니다`
+            
+            document.f.watch.value = msg;           //시간은 공백이면 그대로 공백
+            //내가 나를 호출하게됨. 재귀함수 setTimeout자체는 반복기능 없는데 재귀함수를 이용해서
+            //setTimeout(showWatch, 1000)   
+        }
+        let timer;
+        function onStart(){
+            //setTimeout(showWatch, 1000) - 1번 호출하고 끝
+            timer = setInterval(showWatch, 1000)  //1초마다 함수를 호출하겠다
+        }
+
+        function onStop(){     //변수를 만들어서 인터벌 함수를 가져와라
+            clearInterval(timer)
+        }
+
+        function onMove(){                  //이름이 없을때는 배열index로 접근가능 여러개일때
+            if(document.f.chk.checked){ 
+            location.href = "10_function5.html"
+            }                   //체크가 true일때만 이동되게 checked로 판별
+        }
+                                    //location은 주로 href, reload 자주 쓴다
+        function onReload(){
+            location.reload()
+        }
+
+        function onImgInfo(){
+            //alert(document.images[0].width)         //form으로 접근하면 안된다.
+            div = document.getElementById("info")
+            div.innerHTML = "첫번째 이미지의 폭 :" +
+                document.images[0].width + "px <br/>"
+            div.innerHTML += "첫번째 이미지의 높이 :" +
+                document.images[0].height + "px <br/>"          //누적활용 += 증가함수. 배열로 접근(첫번쨰,두번째)
+            div.innerHTML += "두번째 이미지의 폭 :" +
+                document.images[1].width + "px <br/>"
+            div.innerHTML += "두번째 이미지의 높이 :" +
+                document.images[1].height + "px <br/>"
+        }
+
+        function onImgSize(){
+            document.images[0].width = 150;
+            document.images[0].height = 150;
+        }
+    </script>
+<body onload="showWatch()">  <!--onload 창이 뜰때-->
+    <form name="f">  <!--데이터를 묶어주기위한-->
+        <input type="button" value="주소 검색" onclick="fnOpen()"/><br/><br/>
+        <input type="text" name="addr"/>
+        <hr/>
+        <input type="text" name="watch" size="50"/>
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" value="현재 시간 시작" onclick="onStart()"/>
+        <input type="button" value="현재 시간 중지" onclick="onStop()"/>
+        <hr/>
+
+        <input type="checkbox" name="chk" onclick="onMove()"/>10_function5.html로 이동
+        <br/>
+        <input type="button" value="새로고침" onclick="onReload()"/>
+        <hr/>
+
+        <table>
+            <tr>
+                <td><img src="images/duke_point.gif"/><br/></td>
+                <td><img src="images/hero6.png"/><br/></td>
+            </tr>
+        </table>
+        <input type="button" value="정보 보기" onclick="onImgInfo()"/>
+        <input type="button" value="이미지 키우기" onclick="onImgSize()"/>
+        <div id="info"></div>
+    </form>
+</body>
+</html>

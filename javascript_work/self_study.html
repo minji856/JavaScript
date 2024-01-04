@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        emplyees = [
+    {
+        firstName : '최',
+        lastName: '유라'
+    },
+    {
+        firstName: '김',
+        lastName: '진경',
+    },
+    {
+        fistName: '박',
+        lastName: '소정'
+    }
+];
+    emplyee = {
+        firstName: '김',
+        lastName: '민지'
+    }
+    console.log(emplyees)
+    Object.assign(emplyees[1],emplyee)
+
+    function hap(a, b, ...rest){       
+            console.log(rest)
+        }
+    console.log(hap(1, 2)) //빈배열 앞에 두개 고정으로빠지니까 남는게 없다
+    console.log(hap(1, 2, 3, 4)) //3, 4
+    console.log(hap(1, 2, 3, 4, 5, 6, 7, 8, 9))
+
+
+    console.log("-------------------------------------------------")
+
+    let num = ["one", "two", "three"];
+    let [red, yellow, green] = num;
+    console.log(red);
+    console.log(num[2]);
+
+
+    let x = 0
+    let y = 0
+    let z = 0
+    let d = 0
+    let arr = [1, 2, 3, 4]
+    // x = arr[0]
+    // y = arr[1]
+    // z = arr[2]
+    ;[x, y, z, d] = arr 
+    console.log(x, y, z)
+    
+    ;[, y, z] = arr
+    console.log(y, z)
+
+    ;[, , z] = arr
+    console.log(z)
+
+    ;[x, y] = arr
+    console.log(x, y)
+
+    ;[, , ,d] = arr //한번에 모아서 넣어주고싶을때 첫번째 빼고 ...y는 나머지연산자 인자로 했을때 반대개념
+    console.log(d)
+
+    // let [a, ...b] = [1, 2, 3];
+    // console.log(a); // 1
+    // console.log(b); // [2, 3]
+
+    // const obj = {
+    // name: "John",
+    // age: 18,
+    // memo: "Hello",
+    // };
+    // // memo, name, age 순으로 작성해도 상관이 없다. 알아서 해당 프로퍼티명에 해당하는 값을 저장한다.
+    // const { memo, age, name } = obj;
+    // console.log(name); // 'John'
+    // console.log(age); // 18
+    // console.log(memo); // 'Hello'
+
+
+    console.log("--------------------------------------------")
+
+    const price = {
+    apple: 1000,
+    banana: 500,
+    orange: 600,
+    grape: 700,
+    };
+    // const { , b, ...otherPrice } = price; 이건 에러
+    const {a, ...otherPrice} = price;
+    console.log(otherPrice); // { banana: 500, orange: 600, grape: 700 }
+    
+    for (let i = 0; i < 10; console.log(i)) {
+    i++;
+    } // 이렇게도 작성할 수 있다. 무조건 공식처럼 안써도됨
+    </script>
+<body>
+    
+</body>
+</html>

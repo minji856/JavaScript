@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>                  //제목과 작가이름을 모아주겠다 타이틀앞에 매개변수가 숨어져있음
+        const Book = function(title, author) {
+            this.title = title
+            this.author = author
+            // titles = title 같은 위치에 계속 저장되는거라 쓸모X
+            // console.log(this.title, this.author)
+        }
+
+        // Book('노인과 바다', '헤밍웨이') //함수였다면 이렇게 호출
+        let b1 = new Book('노인과 바다', '헤밍웨이')
+        console.log(b1.title, b1.author)
+
+        let b2 = new Book('홍길동전', '허균')
+        console.log(b2.title, b2.author)
+
+        //setValue 메서드가 Book에 만들어짐
+        Book.prototype.setValue = function(title, author){
+            this.title = title
+            this.author = author
+        }
+
+        b1.setValue('노인과 강', '헤밍코드')
+        console.log(b1.title, b1.author)
+
+        //title author setValue tostring 4개가 객체의 덩어리가된다.
+        Book.prototype.toString = function(){
+            return this.title + '[' + this.author + ']'
+        }
+        
+        console.log(b1.toString()) //노인과 강[헤밍코드]
+        console.log(b2.toString()) //홍길동전[허균]
+
+    </script>
+<body>
+    
+</body>
+</html>

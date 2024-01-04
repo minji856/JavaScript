@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnCall1(){
+            alert("fnCall1 함수 호출됨")
+        } //핸들러
+
+        function fnCall2(){
+            alert("fnCall2 함수 호출됨")
+        } //핸들러
+
+        window.onload = function(){
+            let btn = document.getElementById('btn')
+            // btn.addEventListener("click", fnCall1, false) //onclick에서 on만빼고 화살표함수도 가능
+            // btn.addEventListener("click", fnCall2, false)
+            btn.onclick = fnCall1   //capture type을 쓸수없다
+            btn.onclick = fnCall2   //onclick 누적X 마지막 이벤트만 add가 안됨
+
+            btn.removeEventListener("click", fnCall1, false)
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="버튼" id="btn"/>
+</body>
+</html>

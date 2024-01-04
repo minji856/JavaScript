@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //addEventListener("change", (event) => {});
+        //onchange = (event) => {};
+        window.onload = function(){
+            const selectel = document.querySelector('.ice-cream')
+            const result = document.querySelector('.result')
+
+            // selectel.addEventListener("change", ev => {
+            //     result.textContent =`당신은 ${ev.target.value}을 좋아합니다`
+            // })             //함수X 변수로 저장해주기   //${event.target.value}
+        
+            const input = document.querySelector('input')
+            const log = document.getElementById('log')
+
+            input.addEventListener("change", updateValue)
+            function updateValue(e){
+                console.log(e.target.value)
+            }
+        
+        }
+    </script>
+</head>
+<body>
+    <label>
+        가장 좋아하는 아이스크림 맛을 고르세요:
+        <select class="ice-cream" name="ice-cream">
+          <option value="">선택…</option>
+          <option value="chocolate">Chocolate</option>
+          <option value="sardine">Sardine</option>
+          <option value="vanilla">Vanilla</option>
+        </select>
+    </label>  
+    <div class="result"></div>
+    <hr/>
+    <input placeholder="Enter some text" name="name"/>
+    <p id="log"></p>
+</body>
+</html>

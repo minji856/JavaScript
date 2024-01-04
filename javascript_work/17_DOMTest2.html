@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let cnt = 0
+
+        function fnAppendItem(){
+            cnt++
+
+            //let cnt = 0 //다시 초기화니까 여기다 카운팅 X
+            //<div></div>
+            let newItem = document.createElement("div")
+
+            //<div id="item1"></div>
+            newItem.setAttribute("id", `item${cnt}`)
+
+            //<div id="item1">새로 추가된 아이템[1]<input type='buton'.../></div>
+            newItem.innerHTML = /*HTML*/ `새로 추가된 아이템[${cnt}] 
+            <input type='button' value='삭제' onclick='fnDeleteItem(${cnt})'/>`
+
+            let itemDiv = document.getElementById("itemList")
+            itemDiv.appendChild(newItem) //append도 가능 더 정확하게하려고
+        }
+
+        function fnDeleteItem(cnt){
+            //console.log(document.getElementById('item' + cnt)) //id값 삭제되는지 콘솔로 확인
+            let item = document.getElementById('item' + cnt)
+                //삭제를 해놓고 더 끝난 작업을 하면 에러날 수 있다. 자기자신이 삭제하는것보다
+                //부모(parentNode)가 자식을 삭제하게끔(removeChild) 해주자.
+            if(item !== null){
+                item.parentNode.removeChild(item)
+            }
+            
+        }
+                //HTML이 먼저 뜨고 js가 실행되야함 인터널이니까 이벤트쓰는것
+        
+        function fnImageLoad(){
+            const containerEl = document.querySelector(".container")
+            const imgEl = document.createElement("img")
+            imgEl.src = "images/hero6.png"
+            containerEl.innerHTML = "" //다른거 쓰면 다 바뀌듯 없어지는 용도
+            containerEl.append(imgEl)
+        }
+
+        window.onload = function(){
+            setTimeout(fnImageLoad,3000)
+            
+        }
+
+        
+        // window.onload = function(){
+        //     let conDiv = document.querySelector(".container")
+        //     console.log(conDiv) //null
+            
+        //     setTimeout(fnNewImg, 3000)
+        // }
+
+        // function fnNewImg(){
+        //     let e1 = document.querySelector(".container")
+        //     e1.innerHTML = "<img src=images/hero6.png>"
+        // }
+    </script>
+</head>
+<body>
+    <input type="button" value="추가" onclick="fnAppendItem()"/>
+    <div id="itemList"></div>
+    <hr/>
+    <div class="container">
+        <h1>Image Loading...</h1>
+        3초 후에 이미지가 로드됩니다. <!--예제-->
+    </div>
+</body>
+</html>

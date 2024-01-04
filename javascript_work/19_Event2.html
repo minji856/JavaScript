@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="log.js"></script>
+    <script>
+        function fnLoad(){
+            log("첫번째 메세지")
+            log("두번째 메세지")
+        }
+        window.onload = function(){
+            fnLoad()
+        }   //body에 걸지말고 윈도우에 걸기
+    </script>
+</head>
+<body>
+    <div id="debugConsole" style="border: 1px sold red;"></div>
+</body>
+</html>

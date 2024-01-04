@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>병합 연산자</title>
+</head>
+    <script>
+        /* Nullish 병합 연산자 */
+        //------------------------------------------------------
+        // let n = 0
+        // let num1 = n || 7
+        // console.log(num1) //참을 먼저 찾는다 0도 의미있는 데이터로 만들고싶다
+
+        let n = 0
+        let num1 = n ?? 7
+        console.log(num1)
+
+        console.log(null ?? 1) //1
+        console.log(undefined ?? 2) //2
+        console.log(null ?? 1 ?? 2) //null 건너뛰고 1
+        console.log(false ?? 1 ?? 2) //null 아니니까 false 선택
+        console.log(0 ?? 1 ?? 2) //0
+        console.log('-------------------------------------------')
+
+        /* 전개 연산자 */
+        //------------------------------------------------------
+        let a = [1, 2, 3]
+        console.log(a[0], a[1], a[2])
+        console.log(...a)
+        
+        let b = [4, 5, 6]
+        let c = [a , b]
+        console.log(c)
+
+        let d = [...a, ...b]
+        console.log(d) //1차원배열로 풀어짐
+        console.log(...d)
+
+        a = {x:1, y:2}
+        b = {y:3, z:4}
+
+        c = {a, b}
+        console.log(c)
+
+        d = {...a, ...b}
+        console.log(d)
+
+        let e = Object.assign({}, a, b) //질문
+        console.log(e)
+
+        console.log('-------------------------------------------')
+
+
+        /* 구조 분해 할당 연산자 */
+        //------------------------------------------------------
+        let x = 0
+        let y = 0
+        let z = 0
+        let arr = [1, 2, 3]
+        // x = arr[0]
+        // y = arr[1]
+        // z = arr[2]
+        ;[x, y, z] = arr 
+        console.log(x, y, z)
+
+        ;[, y, z] = arr
+        console.log(y, z)
+
+        ;[, , z] = arr
+        console.log(z)
+
+        ;[x, y] = arr
+        console.log(x, y)
+
+        ;[x, ...y] = arr //한번에 모아서 넣어주고싶을때 첫번째 빼고 ...y는 나머지연산자 인자로 했을때 반대개념
+        console.log(x, y) //(2) [2, 3]
+
+        // 배열과 객체의 비교 
+
+        arr = [1, 2, 3, 4, 5]
+        let obj = {
+            a:1, 
+            b:2, 
+            c:3,
+            d:4, 
+            e:5} //키와 함께
+
+        ;[,,,,z] = arr
+        console.log(z) //5
+
+        ;({e} = obj) //; 으로 끊어주기 변수가 많아서 괄호 처리
+        console.log(e) //5
+
+        console.log('-------------------------------------------')
+    </script>
+<body>
+    
+</body>
+</html>

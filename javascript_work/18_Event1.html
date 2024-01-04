@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnOut(){
+            document.getElementById('btn').style.backgroundColor='yellow' //this라고 하면 안된다.다른곳이기 때문
+        }
+    </script>
+</head>
+<body>
+    <input type="button" name="btn" id="btn" value="나는 버튼이다."
+    onmouseover="this.style.backgroundColor='red'"
+    onmouseout="fnOut()"/> <!--마우스를 올려놨을때 버튼이 만들어진 주소에 적용해야함 this!-->
+</body>
+</html>

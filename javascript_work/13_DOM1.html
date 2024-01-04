@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnLoad(){
+        /* Node vs Element*/
+        //-----------------------------------------------------------
+        //js에서 css선택자에 접근해서 html 접근 스크립트의 순서때문 //인터널로 하기 때문에 함수로 호출해줘야함
+    
+        const parent = document.querySelector('.parent')
+        console.log(parent.childNodes) //0:text(주석) 1:comment 2:text 3:div.child1
+        console.log(parent.children)
+        console.log("----------------------------------")
+    
+        /* 검색 api */
+        //----------------------------------------------------------
+        const e1 = document.getElementById('child2') //id접근방식 없는id넣으면 null값나옴
+        console.log(e1)
+
+        const e3 = document.querySelector('.child')  //똑같은 child니까 첫번째
+        console.log(e3)
+
+        const e4 = document.querySelector('#child2')   //id속성 접근 #으로
+        console.log(e4)
+
+        const e5 = document.querySelector('.child:last-child')  //가상클래스 선택자 last-child
+        console.log(e5)                             //접근을 해야 일을 하니까
+        
+        const e6 = document.querySelectorAll('.child') //NpdeList 로 출력. []로 감싸고있다고 배열 메서드 쓰면 안됨. 유사배열(like array)
+        console.log(e6)    //NodeList(2) [div.child, div#child2.child]
+        e6.forEach(e => console.log(e.textContent))    //1,2 //노드리스트에서만 쓸수있는 함수    
+        
+        console.log(Array.from(e6).reverse()) //array 함수여서 안먹힌다 즉 array가 아님! => array로 만들어주라
+        console.log("------------------------------------")
+
+        const e7 = document.querySelector(".child")
+        console.log(e7.parentElement) //parent div
+        
+        console.log(e7.closest('div')) //자신을 포함해서 부모들중에 가장 가까운 자식. child1이 div가 아니였으면 parent
+        console.log(e7.closest('body'))
+        console.log(e7.closest('.hello'))
+
+        console.log(e7.previousSibling) //공백
+        console.log(e7.nextSibling) 
+        console.log(e7.previousSibling.parentElement)  //parent div
+        
+        console.log(e7.children)
+
+        console.log(e7.previousElementSibling) //null
+        console.log(e7.nextElementSibling)
+
+        console.log(e7.firstElementChild) //null
+        console.log(e7.lastElementChild)    //null
+    }
+        
+    </script>
+</head>
+<body onload="fnLoad()">
+    <div class="parent">
+        <!-- 주석 공백들도 노드로써의 역할을 해서 text로 출력됨. -->
+        <div class="child">1</div> <!--엘리먼트는 child클래스2개 나머지 1,2,주석조차도 노드-->
+        텍스트1
+        <div id="child2" class="child">2</div> <!--1 은 단말노드 글자로 된 노드.더이상 뒤에 자식X-->
+        텍스트2
+    </div>
+</body>
+</html>

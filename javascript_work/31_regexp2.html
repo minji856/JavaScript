@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+        const str = `
+010-1234-5678
+thesecond@gmail.com
+Hello world!
+https://www.omdbapi.com/?apikey=7035c60c&s=frozen
+The quick brown fox jumps over the lazy dog.
+hello@naver.com
+http://localhost:1234
+동해물과 백두산이 마르고 닳도록
+abbcccddddeeeee___` 
+
+        console.log(str.match(/^h.../gm))  //.은 한글자의 단어를 뜻한다 총 네글자
+        console.log(str.match(/^h.../gmi))
+        console.log("--------------------------------------")
+
+        console.log(str.match(/\.com/g))
+        console.log(str.match(/\.com$/g)) //null g는 한덩어리 전체
+        console.log(str.match(/\.com$/gm)) //[''com','.com']
+        console.log(str.match(/...\.com$/gm)) //.com 앞에 3글자
+        console.log("--------------------------------------")
+
+        console.log(str.match(/fox|dog/g)) //['fox', 'dog']
+        console.log(str.match(/fox|dog|\.com/g)) //['.com', '.com', 'fox', 'dog', '.com']
+        console.log(str.match(/http/g)) //['http', 'http']
+        console.log(str.match(/https/g))
+        console.log(str.match(/https?/g)) //['https', 'http']
+        console.log("--------------------------------------")
+
+        console.log(str.match(/\d/g))
+        console.log(str.match(/\d{3}/g)) //['010', '123', '567', '703', '123']
+        console.log(str.match(/e{3}/g))
+        console.log(str.match(/d{3}/g))
+        console.log(str.match(/c{3}/g))
+        console.log(str.match(/b{3}/g))
+        //3개이상
+        console.log(str.match(/\d{3,9}/g)) 
+        console.log(str.match(/\d{3,}/g)) //['010', '1234', '5678', '7035', '1234']
+        //1개이상
+        console.log(str.match(/\d{1,}/g)) //['010', '1234', '5678', '7035', '60', '1234']
+        console.log(str.match(/\d+/g)) //['010', '1234', '5678', '7035', '60', '1234']
+        console.log("--------------------------------------")
+
+
+        console.log(str.match(/[ab]/g)) //11개
+        console.log(str.match(/[foxdog]/g))
+        console.log(str.match(/[a-z]/g)) //모든 소문자
+        console.log(str.match(/[a-z]{1,}/g))
+        console.log(str.match(/[a-zA-Z]{1,}/g))
+        console.log(str.match(/[a-zA-Z가-힣]{1,}/g))
+        console.log(str.match(/[a-zA-Z가-힣0-9]{1,}/g)) //특수문자를 제외한 모든 일반숫자와 문자
+        console.log("--------------------------------------")
+
+        console.log(str.match(/\w+/g))
+        console.log(str.match(/\b[0-9]+\b/g)) //경계값이 있냐없냐 c60c 63개의 문자에 해당해서 출력
+        console.log(str.match(/\s/g))
+        console.log("--------------------------------------")
+
+        console.log(str.match(/https?:\/\/\w+\.?/g)) //역슬래쉬로 //을 기능을 막아줘야함 .이 있을수도있고 없을수도있으니까 ?로 표현
+        console.log(str.match(/https?:\/\/(?:\w+\.?)+/g)) //['https://www.omdbapi.com', 'http://localhost']
+        //문자도 나올수도있고 .도 나올수도있고 계속 작성하지말고 그룹으로 묶어서 반복할 수 있게
+        console.log(str.match(/https?:\/\/(?:\w+\.?)+\/?/g))
+        console.log(str.match(/.+(?=과)/g))
+                            //글자(.)가 1개이상 와야한다
+        console.log(str.match(/(?<=과).+/g))
+        
+        //전화번호 검색
+
+        console.log(str.match(/...(?=-)...+/g))
+
+        //이메일 검색
+
+        console.log(str.match(/..+@..+.com/g))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

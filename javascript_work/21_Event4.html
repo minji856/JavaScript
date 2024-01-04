@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="log.js"></script>
+    <script>
+        window.onload = () => {
+            let btn = document.getElementById("btn")  //어떤정보가 딸려오는지
+            btn.addEventListener("click", (ev)=>{
+                log(ev.target) //이벤트가 발생한 목표지점을 자동으로 받아올 수 있다.
+                console.log(ev.target)
+
+                log(ev.target.id)
+                log(ev.target.type)
+            }, false)   //생략하면 자동 false
+                                    
+                //장소는 같지만 여러가지 사건 가능
+            btn.addEventListener("keydown", (ev)=>{
+                log(ev.key)         //내가 어떤키를 누르는지 나온다 (on)keydown
+            })                
+
+            btn.addEventListener("wheel", (ev)=>{
+                console.log(ev)
+            })                           
+}                                             
+    </script>
+</head>
+<body>
+    <input type="button" value="버튼" id="btn"/>
+    <br/><br/>
+    <div id="debugConsole" style="border: 1px solid red;"></div>
+</body>
+</html>
